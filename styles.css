@@ -881,7 +881,7 @@ footer {
   max-width: 250px;
 }
 .contact-item p {
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 400;
   color: #333; /* Adjust text color as needed */
   margin: 0;
@@ -1026,7 +1026,7 @@ footer {
   }
   
   .contact-item p {
-    font-size: 16px;
+    font-size: 36px;
     color: #333; /* Adjust text color as needed */
     margin: 0;
   }
