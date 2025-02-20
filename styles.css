@@ -510,6 +510,384 @@ nav {
   height: 100px;
 }
 
+/* At your service css */
+
+/* ✅ Ensuring responsiveness for "At Your Service" section */
+#at-your-service {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  padding: 20px;
+  gap: 20px; /* Space between image and text */
+}
+
+/* ✅ Image Styling */
+#at-your-service .location__image {
+  flex: 1;
+  max-width: 40%; /* Takes up half the space on large screens */
+}
+
+#at-your-service .location__image img {
+  width: 50%; /* Makes the image responsive */
+  height: auto;
+  border-radius: 10px; /* Optional: adds rounded corners */
+}
+
+/* ✅ Text Content Styling */
+#at-your-service .location__content {
+  flex: 1;
+  max-width: 50%; /* Takes up half the space on large screens */
+}
+
+#at-your-service .section__header {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Animation for the entire UL */
+.location__container ul {
+  list-style: none;
+  padding: 0;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp 1.5s ease-in-out forwards 0.8s; /* Animation for the entire list */
+}
+
+/* Animation for each LI */
+.location__container ul li {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #444;
+  padding-left: 18px;
+  position: relative;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInListItem 0.8s ease-in-out forwards;
+}
+
+/* Checkmark styling */
+.location__container ul li::before {
+  content: "✔";
+  color: #007bff;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Animation for the whole UL */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Animation for each individual LI item */
+@keyframes fadeInListItem {
+  from {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Delay animations for each list item */
+.location__container ul li:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.location__container ul li:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.location__container ul li:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+.location__container ul li:nth-child(4) {
+  animation-delay: 1.6s;
+}
+
+.location__container ul li:nth-child(5) {
+  animation-delay: 1.8s;
+}
+
+.location__container ul li:nth-child(6) {
+  animation-delay: 2s;
+}
+
+
+
+/* Our Fleet Section - Scoped Styles */
+/* Our Fleet Section - White Background, Yellow Checkmarks, Light Yellow Hover Animation */
+.fleet__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff; /* White background */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slight shadow for card effect */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Content Styling */
+.fleet__content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fleet__content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222; /* Dark text for the heading */
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.fleet__content p {
+  font-size: 1.1rem;
+  color: #555; /* Dark grey text */
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Fleet List Styling */
+.fleet__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* Add Fade-in Animation */
+.fleet__category {
+  background-color: #f9f9f9; /* Light grey background for categories */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 22%;
+  transition: border 0.3s ease, transform 0.3s ease;
+  border: 2px solid transparent; /* Initial transparent border */
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 0.6s forwards; /* Animation for fade-in */
+}
+
+/* Keyframe for Fade-in Animation */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Delay Animation for Each Card */
+.fleet__category:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.fleet__category:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.fleet__category:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.fleet__category:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.fleet__category h3 {
+  font-size: 1.4rem;
+  color: #222; /* Dark text for category headings */
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.fleet__category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.fleet__category ul li {
+  font-size: 1rem;
+  color: #333; /* Dark grey for list items */
+  margin-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.fleet__category ul li::before {
+  content: "✔";
+  color: #f7c600; /* Yellow checkmark */
+  position: absolute;
+  left: 0;
+}
+
+/* Hover Effect on Border Only */
+.fleet__category:hover {
+  border: 2px solid #ffeb3b; /* Light yellow border on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .fleet__list {
+      justify-content: space-around;
+  }
+  .fleet__category {
+      width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .fleet__list {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .fleet__category {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .fleet__content h2 {
+      font-size: 1.8rem; /* Adjust font size */
+  }
+}
+
+
+/* our services  */
+
+.services {
+  background-color: #f4f4f2; /* Light Yellow */
+  color: #000000; /* Black */
+  padding: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.service-header h2 {
+  text-align: center;
+  font-size: 48px; /* Larger font size for 'Our Services' */
+  font-weight: bold;
+  text-transform: uppercase; /* Capitalizes all letters */
+  letter-spacing: 2px; /* Adjust letter spacing */
+  color: #000; /* Black color */
+  margin-bottom: 10px; /* Space below the text */
+  position: relative; /* Positioning for the line */
+}
+
+.service-header h2::after {
+  content: ''; /* Empty content for the line */
+  position: absolute;
+  bottom: 0; /* Position the line right under the text */
+  left: 0;
+  width: 100%;
+  height: 3px; /* Height of the line */
+  background-color: #f9e600; /* Light yellow color */
+}
+
+.service-header h3 {
+  text-align: center;
+  font-size: 24px; /* Slightly smaller font size for the subheading */
+  font-weight: normal;
+  text-transform: none; /* Keep original case for the subheading */
+  margin-top: 10px;
+  color: #333; /* Dark gray color */
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two cards per row */
+  gap: 20px;
+  max-width: 1600px; /* Limit the grid width */
+  margin: 0 auto; /* Centering the grid */
+}
+
+.service-card {
+  background-color: #ffffff; /* White */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* For the border effect */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for cards */
+.service-card:hover {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+  transform: scale(1.05); /* Slight scale increase */
+}
+
+/* Border animation on hover */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.5s ease; /* Smooth transition */
+  box-sizing: border-box;
+}
+
+.service-card:hover::before {
+  border: 2px solid #000; /* Black border */
+  border-top: 2px solid #f9e600; /* Yellow top border */
+  border-right: 2px solid #f9e600; /* Yellow right border */
+  border-bottom: 2px solid #f9e600; /* Yellow bottom border */
+  border-left: 2px solid #f9e600; /* Yellow left border */
+}
+
+.service-card h3 {
+  font-size: 22px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #666666;
+  line-height: 1.6;
+}
+
+.service-card ul {
+  list-style-type: disc; /* Bullet points */
+  padding-left: 20px; /* Space from the left */
+}
+
+.service-card ul li {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Make the layout responsive */
+@media (max-width: 768px) {
+  .service-list {
+      grid-template-columns: 1fr; /* One card per row on small screens */
+  }
+}
+
+
+
+
+
 /* form css */
 /* Ensuring styles are scoped only to the car rental form */
 .car-rental-form-section {
@@ -674,6 +1052,30 @@ nav {
     align-items: center;
     margin-bottom: 10px;
     
+  }
+
+
+  #at-your-service {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+
+  #at-your-service .location__image {
+    display: none; /* Hide image on mobile */
+  }
+
+  #at-your-service .location__content {
+    max-width: 100%;
+    text-align: left; /* Keep text aligned to the left */
+  }
+
+  #at-your-service .section__header, 
+  #at-your-service h3 {
+    text-align: left;
+  }
+
+  #at-your-service p {
+    text-align: left;
   }
 }
 
