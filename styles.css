@@ -237,6 +237,9 @@ nav {
   border: 8px solid var(--white);
 }
 
+
+
+
 .range__container .section__header {
   max-width: 700px;
   margin-inline: auto;
@@ -269,6 +272,7 @@ nav {
 
 .range__details {
   position: absolute;
+  text-transform: uppercase;
   inset: 0;
   padding: 2rem;
   background-image: linear-gradient(
@@ -281,10 +285,15 @@ nav {
 
 .range__details h4 {
   margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 600;
   font-family: var(--header-font);
   color: var(--white);
+}
+.range__details p {
+  color: white;
+  font-size: 16px; /* Adjust paragraph size for readability */
+  line-height: 1.5;
 }
 
 .range__details a {
@@ -315,6 +324,7 @@ nav {
 
 .location__content .section__header {
   margin-bottom: 2rem;
+  text-transform: uppercase;
 }
 
 .location__content p {
