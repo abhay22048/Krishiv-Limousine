@@ -47,46 +47,56 @@ document.addEventListener("DOMContentLoaded", function () {
     ScrollReveal().reveal(selector, { ...scrollRevealOptions, ...options });
   });
 
+
+  
+
+  
+
   // Swiper Logic
   const selectCards = document.querySelectorAll(".select__card");
-  if (selectCards.length > 0) {
-    selectCards[0].classList.add("show__info");
+if (selectCards.length > 0) {
+  selectCards[0].classList.add("show__info");
+}
+
+const price = ["225", "455", "275", "625", "395"];
+const priceEl = document.getElementById("select-price");
+
+function updateSwiperImage(eventName, args) {
+  if (eventName === "slideChangeTransitionStart") {
+    const index = args && args[0].realIndex;
+    priceEl.innerText = price[index];
+
+    selectCards.forEach((item) => {
+      item.classList.remove("show__info");
+    });
+
+    selectCards[index].classList.add("show__info");
   }
+}
 
-  const price = ["225", "455", "275", "625", "395"];
-  const priceEl = document.getElementById("select-price");
+const swiper = new Swiper(".swiper", {
+  loop: true,
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 0,
+    depth: 500,
+    modifier: 1,
+    scale: 0.75,
+    slideShadows: false,
+    stretch: -100,
+  },
+  autoplay: {
+    delay: 2000, // Changes slide every 2 seconds
+    disableOnInteraction: false, // Keeps autoplay working even if user interacts
+  },
+  onAny(event, ...args) {
+    updateSwiperImage(event, args);
+  },
+});
 
-  function updateSwiperImage(eventName, args) {
-    if (eventName === "slideChangeTransitionStart") {
-      const index = args && args[0].realIndex;
-      priceEl.innerText = price[index];
-
-      selectCards.forEach((item) => {
-        item.classList.remove("show__info");
-      });
-
-      selectCards[index].classList.add("show__info");
-    }
-  }
-
-  const swiper = new Swiper(".swiper", {
-    loop: true,
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 0,
-      depth: 500,
-      modifier: 1,
-      scale: 0.75,
-      slideShadows: false,
-      stretch: -100,
-    },
-    onAny(event, ...args) {
-      updateSwiperImage(event, args);
-    },
-  });
 
   // Banner Duplication Logic
   const banner = document.querySelector(".banner__wrapper");

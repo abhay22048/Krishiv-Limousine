@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="faq.css" />
@@ -14,41 +15,84 @@
 
 <body>
   <header>
-    <nav>
-      <div class="nav__header">
-        <div class="nav__logo">
-          <a href="/">KRISHIV LIMOUSINE</a>
+    <nav style=" padding: 15px;">
+        <div class="nav__header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="nav__logo">
+                <a href="/" style="color: #F5F5F5; text-decoration: none; font-size: 24px; font-weight: bold;">KRISHIV LIMOUSINE</a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line" style="color: #F5F5F5; font-size: 24px;"></i>
+            </div>
         </div>
-        <div class="nav__menu__btn" id="menu-btn">
-          <i class="ri-menu-line"></i>
-        </div>
+        <ul class="nav__links" id="nav-links" style="list-style: none; display: flex; gap: 20px; padding: 0; margin: 10px 0;">
+            <li><a href="#home" style="color: #F5F5F5; text-decoration: none;">Home</a></li>
+            <li><a href="#services" style="color: #F5F5F5; text-decoration: none;">Services</a></li>
+            <li><a href="#our-fleet" style="color: #F5F5F5; text-decoration: none;">The Fleet</a></li>
+            <li><a href="#faq" style="color: #F5F5F5; text-decoration: none;">FAQ's</a></li>
+            <li><a href="#about us" style="color: #F5F5F5; text-decoration: none;">About</a></li>
+            <li><a href="#contact" style="color: #F5F5F5; text-decoration: none;">Contact</a></li>
+        </ul>
+        <div class="nav__btn" style="display: flex; align-items: center; gap: 15px;">
+          <a href="#book-now" class="hide-on-mobile">
+              <button class="btn" style="background: #070707; color: #fdfafa; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold;">
+                  Book Now
+              </button>
+          </a>
+          <a href="tel:+61123456789" class="phone-number hide-on-mobile" style="color: #F5F5F5; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+              <i class="ri-phone-fill"></i> +(61) 430 568 708
+          </a>
       </div>
-      <ul class="nav__links" id="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">services</a></li>
-        <li><a href="#our-fleet">The Fleet</a></li>
-        <li><a href="#faq">FAQ's</a></li>
-        <li><a href="#about us">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-
-      </ul>
-      <div class="nav__btn">
-        <a href="#book-now">
-          <button class="btn">Book Now</button>
-        </a>
-      </div>
-
+      
+      <style>
+        
+      </style>
+      
     </nav>
-    <div class="header__container" id="home">
-      <h1>PREMIUM LIMOUSINE SERVICES AUSTRALIA-WIDE</h1>
 
-      <img src="assets/Audi.png" alt="header" />
+    <!-- Background Animation -->
+    <div class="header-background" id="header-background"></div>
+    <div class="header-overlay"></div> <!-- Dark Overlay -->
+
+    <div class="header__container" id="home" style="text-align: center; padding: 50px 0;">
+        <h1 id="header-text" style="color: #F5F5F5; font-size: 52px;">PREMIUM LIMOUSINE SERVICES AUSTRALIA WIDE</h1>
+        <!-- <img src="assets/Audipng" alt="header" /> -->
     </div>
-    <a href="#about" class="scroll__down">
-      <i class="ri-arrow-down-line"></i>
-    </a>
-  </header>
 
+    <!-- <a href="#about" class="scroll__down" style="display: block; text-align: center; margin-top: 20px; color: #F5F5F5; font-size: 24px;">
+        <i class="ri-arrow-down-line"></i>
+    </a> -->
+</header>
+
+
+  <script>
+    window.onload = function () {
+      let slideIndex = 0;
+      const images = [
+        "assets/s1.jpg",
+        "assets/s2.webp",
+        "assets/Wedding Car Service.png",
+        // "assets/All day Hire.png",
+        "assets/s5.jpg",
+
+
+
+      ];
+  
+      function changeBackground() {
+        let headerBackground = document.getElementById("header-background");
+        if (headerBackground) {
+          headerBackground.style.backgroundImage = `url(${images[slideIndex]})`;
+          slideIndex = (slideIndex + 1) % images.length;
+        }
+      }
+  
+      setInterval(changeBackground, 3000); // Change background every 3 seconds
+      changeBackground(); // Initialize on load
+    };
+  </script>
+  
+  
+  
   <!-- AT YOUR SERVICE SECTION -->
 
   <section class="section__container location__container" id="at-your-service">
@@ -78,64 +122,73 @@
     </div>
   </section>
 
+
+
+  <!-- our fleet SECTION -->
+
   <section class="section__container fleet__container" id="our-fleet">
     <div class="fleet__content">
-      <h2 class="section__header">OUR FLEET – LUXURY VEHICLES FOR EVERY OCCASION</h2>
-      <p>
-        Experience luxury, comfort, and style with Krishiv Limousines' diverse fleet. 
-        <br><br>
-        Our well-maintained, luxury fleet is designed to suit any occasion. Each vehicle is carefully serviced and kept
-        in top condition to provide a smooth, stylish, and comfortable ride. Driven by experienced and professional chauffeurs, 
-        we prioritise safety, reliability, and exceptional service, so you can sit back, relax, and enjoy the journey.
-      </p>
-  
-      <div class="fleet__list">
-        <div class="fleet__category">
-          <h3>Luxury Sedans</h3>
-          <ul>
-            <li>Mercedes-Benz S-Class</li>
-            <li>BMW 7 Series</li>
-            <li>Audi Q7</li>
-          </ul>
+        <h2 class="section__header">
+            <span class="fleet-title">OUR FLEET</span> 
+            <span class="fleet-subtitle">LUXURY VEHICLES FOR EVERY OCCASION</span>
+        </h2>
+
+        <p>
+            Experience luxury, comfort, and style with Krishiv Limousines' diverse fleet. 
+            <br><br>
+            Our well-maintained, luxury fleet is designed to suit any occasion. Each vehicle is carefully serviced and kept
+            in top condition to provide a smooth, stylish, and comfortable ride. Driven by experienced and professional chauffeurs, 
+            we prioritize safety, reliability, and exceptional service, so you can sit back, relax, and enjoy the journey.
+        </p>
+
+        <div class="fleet__list">
+            <div class="fleet__category fleet-sedan">
+                <h3>Luxury Sedans</h3>
+                <ul>
+                    <li>Mercedes-Benz S-Class</li>
+                    <li>BMW 7 Series</li>
+                    <li>Audi Q7</li>
+                </ul>
+            </div>
+
+            <div class="fleet__category fleet-suv">
+                <h3>Executive SUVs</h3>
+                <ul>
+                    <li>Range Rover</li>
+                    <li>Lexus LX</li>
+                    <li>Mercedes-Benz G Wagon</li>
+                    <li>Bentley Bentayga</li>
+                </ul>
+            </div>
+
+            <div class="fleet__category fleet-limo">
+                <h3>Stretch Limousines</h3>
+                <ul>
+                    <li>Chrysler 300</li>
+                    <li>Hummer Limo</li>
+                    <li>Ford Town Car</li>
+                </ul>
+            </div>
+
+            <div class="fleet__category fleet-van">
+                <h3>Premium Vans & Minibuses</h3>
+                <ul>
+                    <li>Mercedes Sprinter (for group travel)</li>
+                </ul>
+            </div>
         </div>
-  
-        <div class="fleet__category">
-          <h3>Executive SUVs</h3>
-          <ul>
-            <li>Range Rover</li>
-            <li>Lexus LX</li>
-            <li>Mercedes-Benz G Wagon</li>
-            <li>Bentley Bentayga</li>
-          </ul>
-        </div>
-  
-        <div class="fleet__category">
-          <h3>Stretch Limousines</h3>
-          <ul>
-            <li>Chrysler 300</li>
-            <li>Hummer Limo</li>
-            <li>Ford Town Car</li>
-          </ul>
-        </div>
-  
-        <div class="fleet__category">
-          <h3>Premium Vans & Minibuses</h3>
-          <ul>
-            <li>Mercedes Sprinter (for group travel)</li>
-          </ul>
-        </div>
-      </div>
-  
-      <p>
-        Our vehicles are <b>meticulously maintained, fully insured, and designed to offer the utmost comfort, style, and safety</b>.
-      </p>
+
+        <p>
+            Our vehicles are <b>meticulously maintained, fully insured, and designed to offer the utmost comfort, style, and safety</b>.
+        </p>
     </div>
-  </section>
+</section>
+
   
   
 
   <section class="section__container range__container" id="about">
-    <h2 class="section__header">WIDE RANGE OF VEHICLES</h2>
+    <h2 class="section__header">WHY CHOOSE US </h2>
     <div class="range__grid">
       <div class="range__card">
         <img src="assets/range-1.jpg" alt="range" />
@@ -179,43 +232,7 @@
   </section>
 
 
- 
-
-
-  <!-- WHY WE THE BEST OPTION -->
-
-<div class="why-choose-us-container">
-  <div class="header">
-    <h2 class="section__header">WHY CHOOSE US?</h2>
-  </div>
-  <div class="features">
-    <div class="feature-item">
-      <h3>Australia-Wide Service Coverage</h3>
-      <p>We operate in Sydney, Melbourne, Brisbane, Perth, Adelaide, Gold Coast, and Canberra.</p>
-    </div>
-   
-    <div class="feature-item">
-      <h3>Luxury & Comfort</h3>
-      <p>Our premium fleet ensures a stylish and seamless ride every time.</p>
-    </div>
-    <div class="feature-item">
-      <h3>Punctual & Reliable</h3>
-      <p>We track flights, monitor traffic, and adjust schedules accordingly.</p>
-    </div>
-    <div class="feature-item">
-      <h3>Experienced & Professional Chauffeurs</h3>
-      <p>Trained to deliver top-tier customer service.</p>
-    </div>
-  </div>
-  <div class="cta">
-    <p>Book your luxury ride today and experience Australia’s most premium chauffeur service with Krishiv Limousine!</p>
-  </div>
-</div>
-
-
-
-
-  
+<!-- ABOUT US   -->
 
 
   <section class="section__container location__container" id="about us">
@@ -260,71 +277,46 @@
 
   <!-- our services -->
 
-<section class="services" id="services">
-  <div class="service-header">
-      <h2 class="section__header">Our Services</h2>
-      <h3> Experience seamless travel with Krishiv Limousines. Our professional
-        chauffeurs ensure every ride is safe, comfortable, and on time. From weddings 
-        and corporate events to concerts and airport transfers, we make every journey effortless and luxurious.<br>
+  <section class="services" id="services">
+    <div class="service-header">
+      <h2 class="section__header">OUR SERVICES</h2>
+      <h3>
+        Experience seamless travel with Krishiv Limousines. Our professional chauffeurs ensure every ride is safe, comfortable, and on time. 
+        From weddings and corporate events to concerts and airport transfers, we make every journey effortless and luxurious.
       </h3>
-<br>
-  </div>
-  <div class="service-list">
-      <div class="service-card">
+    </div>
+  
+    <div class="service-list">
+      <div class="service-card airport">
+        <div class="service-overlay">
           <h3>Airport Transfers</h3>
-          <p>Skip the taxi lines and step straight into comfort
-            and style with Krishiv Limousines' 24/7 airport transfers. 
-            From the moment you land, your professional chauffeur will 
-            be ready to assist with luggage and ensure a seamless 
-            journey—whether you're heading to your home, hotel, or business meeting.
-          </p>
-          <!-- <ul>
-              <li>Meet & Greet Service</li>
-              <li>Luggage Assistance</li>
-              <li>Flight Tracking & Real-time Updates</li>
-              <li>VIP Chauffeured Experience</li>
-          </ul> -->
+          <p>Skip the taxi lines and step straight into comfort and style with Krishiv Limousines' 24/7 airport transfers.</p>
+        </div>
       </div>
-      <div class="service-card">
+  
+      <div class="service-card corporate">
+        <div class="service-overlay">
           <h3>Event & Corporate Transportation</h3>
-          <p>Professional, reliable, and seamless. Krishiv Limousines ensures on-time, luxury transport for meetings, corporate events, and VIP clients—so you can focus on business while we handle the journey.
-          </p>
-          <!-- <ul>
-              <li>Executive Travel for Corporate Clients</li>
-              <li>Hourly or Full-Day Chauffeur Hire</li>
-              <li>Luxury Transport for Conferences & Business Events</li>
-              <li>Onboard Charging Ports, Still Water & Sanitiser</li>
-          </ul> -->
+          <p>Reliable and seamless transport for meetings, corporate events, and VIP clients—so you can focus on business while we handle the journey.</p>
+        </div>
       </div>
-      <div class="service-card">
+  
+      <div class="service-card all-day">
+        <div class="service-overlay">
           <h3>All Day Hire</h3>
-          <p>Sit back and enjoy our all day hire from 9 AM to 5 PM, your private chauffeur and luxury vehicle are at your service, ensuring effortless transfers between meetings, events, or city stops—no waiting, no hassle.
-          </p>
-          <!-- <ul>
-              <li>Mercedes, Audi & BMW Wedding Cars</li>
-              <li>Red Carpet Treatment & Chauffeured Experience</li>
-              <li>Custom Wedding Packages Available</li>
-          </ul> -->
+          <p>Your private chauffeur and luxury vehicle are at your service, ensuring effortless transfers throughout the day.</p>
+        </div>
       </div>
-      <div class="service-card">
+  
+      <div class="service-card wedding">
+        <div class="service-overlay">
           <h3>Wedding Cars Service</h3>
-          <p>You deserve the best of the best on your special day. Our luxury wedding cars and professional chauffeurs will provide a first-class experience tailored to your big day. Whether you choose a Mercedes, Audi, Bentley, or stretch limo, we. Let us handle the journey while you create memories that last a lifetime</p>
-          <!-- <ul>
-              <li>Great Ocean Road, Blue Mountains, Hunter Valley Wine Tours & More</li>
-              <li>Luxury City Tours in Melbourne, Sydney, Brisbane, & More</li>
-              <li>Private Chauffeured Vehicles for Day Trips</li>
-          </ul> -->
+          <p>Luxury wedding cars and professional chauffeurs ensure a first-class experience tailored to your big day.</p>
+        </div>
       </div>
-      <!-- <div class="service-card">
-          <h3>5. Cruise Ship Transfers</h3>
-          <p>Arrive at your cruise terminal in style and on time. Our cruise transfer service ensures hassle-free transport to and from Australian cruise ports.</p>
-      </div>
-      <div class="service-card">
-          <h3>6. Event & VIP Transportation</h3>
-          <p>From concerts and sporting events to red-carpet premieres, travel like a VIP. Our premium fleet ensures comfort, privacy, and top-tier service.</p>
-      </div> -->
-  </div>
-</section>
+    </div>
+  </section>
+  
 
 
 
@@ -359,108 +351,71 @@
     <h2 class="section__header">PICK YOUR CAR TODAY</h2>
 
     <div class="swiper">
-
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <div class="select__card">
-            <img src="assets/pngegg.png" alt="select" />
-            <div class="select__info">
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="select__card">
+                    <img src="assets/pngegggggg.png" alt="select" />
+                    <h3 class="car-name">Tesla Model X</h3> <!-- Car name added here -->
+                    <div class="select__info">
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="select__card">
-            <img src="assets/Audi.png" alt="select" />
-            <div class="select__info">
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
+            <div class="swiper-slide">
+                <div class="select__card">
+                    <img src="assets/Audiiii.png" alt="select" />
+                    <h3 class="car-name">Audi R8</h3>
+                    <div class="select__info">
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="select__card">
-            <img src="assets/lexus.png" alt="select" />
-            <div class="select__info">
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
+            <div class="swiper-slide">
+                <div class="select__card">
+                    <img src="assets/lexusss.png" alt="select" />
+                    <h3 class="car-name">Lexus RX</h3>
+                    <div class="select__info">
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="select__card">
-            <img src="assets/van.png" alt="select" />
-            <div class="select__info">
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
+            <div class="swiper-slide">
+                <div class="select__card">
+                    <img src="assets/van.png" alt="select" />
+                    <h3 class="car-name">Mercedes Van</h3>
+                    <div class="select__info">
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="select__card">
-            <img src="assets/pngwing.com (3).png" alt="select" />
-            <div class="select__info">
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
-              <div class="select__info__card">
-
-              </div>
+            <div class="swiper-slide">
+                <div class="select__card">
+                    <img src="assets/pngwing.com (3)qq.png" alt="select" />
+                    <h3 class="car-name">BMW M5</h3>
+                    <div class="select__info">
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                        <div class="select__info__card"></div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</section>
 
-  </section>
 
 
 

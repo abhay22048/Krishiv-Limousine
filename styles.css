@@ -32,6 +32,41 @@
   line-height: 4.25rem;
 }
 
+
+.fleet-title {
+  display: block;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 5px; /* Reduces gap between spans */
+}
+
+.fleet-subtitle {
+  display: inline-block;
+  font-size: 1.8rem;
+  white-space: nowrap; /* Ensures it stays on one line */
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 768px) {
+  .section__header {
+    font-size: 1.5rem;
+    line-height: 1.1; /* Further reduces space on small screens */
+  }
+
+  .fleet-title {
+    font-size: 2rem;
+    margin-bottom: 3px; /* Adjust gap for smaller screens */
+  }
+
+  .fleet-subtitle {
+    font-size: 1.5rem;
+    white-space: normal; /* Allows wrapping if needed */
+  }
+}
+
+
+
+
 .btn {
   padding: 1rem 1.5rem;
   outline: none;
@@ -72,13 +107,41 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Ensure the header has a relative position */
 header {
   position: relative;
-  background-image: url("assets/header-bg.png");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; /* Make sure header takes full viewport height */
+  overflow: hidden; /* Prevent any extra scrolling issues */
 }
+
+/* Background Animation Limited to Header */
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Keeps it behind header content */
+  transition: background-image 1s ease-in-out;
+}
+
+/* Ensure header content is above the background */
+.header__container {
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (max-width: 768px) {
+  #header-text {
+      font-size: 28px; /* Adjusted for better readability on mobile */
+      padding: 0 10px; /* Added some padding to avoid text touching edges */
+      padding-top: 70px;
+  }
+}
+
 
 nav {
   position: fixed;
@@ -140,8 +203,20 @@ nav {
 }
 
 .nav__btn {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items */
 }
+
+.nav__btn a {
+  margin-bottom: 10px; /* Adds space between elements */
+}
+@media (max-width: 768px) { 
+  .nav__btn {
+    display: none; /* Hides the entire nav__btn section on mobile */
+  }
+}
+
 
 .header__container {
   position: relative;
@@ -310,6 +385,31 @@ nav {
   border-color: var(--primary-color);
 }
 
+/* Responsive Heading for wide range of vehicles*/ 
+@media (max-width: 768px) {
+  .range__details h4 {
+    font-size: 1.5rem; /* Smaller font for tablets */
+  }
+}
+@media (max-width: 480px) {
+  .range__details h4 {
+    font-size: 1.2rem; /* Even smaller font for mobile */
+  }
+}
+@media (max-width: 768px) {
+  .range__details p {
+    font-size: 14px; /* Reduce text size on smaller screens */
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .range__details p {
+    font-size: 12px; /* Further reduce for mobile screens */
+    line-height: 1.3;
+  }
+}
+
 .location__container {
   display: grid;
   gap: 2rem 0;
@@ -355,6 +455,19 @@ nav {
 .swiper-slide {
   max-width: 900px;
 }
+
+.car-name {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #000000; /* Neon Blue-Green Color */
+  font-family: 'Orbitron', sans-serif; /* Robotic Font */
+  text-transform: uppercase; /* Make it all uppercase for a techy look */
+  letter-spacing: 2px; /* Add some spacing between letters */
+}
+
+
 
 .select__card img {
   max-width: 800px;
@@ -640,7 +753,7 @@ nav {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
-  background-color: #fff; /* White background */
+  background-image: url(assets/header-bg.png); /* White background */
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slight shadow for card effect */
   font-family: 'Arial', sans-serif;
@@ -656,14 +769,14 @@ nav {
 .fleet__content h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #222; /* Dark text for the heading */
+  color: #222;
   margin-bottom: 20px;
   letter-spacing: 2px;
 }
 
 .fleet__content p {
   font-size: 1.1rem;
-  color: #555; /* Dark grey text */
+  color: #555;
   margin-bottom: 30px;
   line-height: 1.6;
 }
@@ -677,20 +790,62 @@ nav {
   margin-bottom: 30px;
 }
 
-/* Add Fade-in Animation */
+/* Fleet Category Styling */
 .fleet__category {
-  background-color: #f9f9f9; /* Light grey background for categories */
+  position: relative;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   width: 22%;
-  transition: border 0.3s ease, transform 0.3s ease;
-  border: 2px solid transparent; /* Initial transparent border */
-  opacity: 0; /* Initially hidden */
-  animation: fadeIn 0.6s forwards; /* Animation for fade-in */
+  transition: transform 0.3s ease-in-out, border 0.3s ease;
+  border: 2px solid transparent;
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  overflow: hidden;
 }
 
-/* Keyframe for Fade-in Animation */
+/* Background Overlay */
+.fleet__category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Lightened overlay for visibility */
+  z-index: 1;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Ensure text is above overlay */
+.fleet__category * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Apply background images */
+.fleet-sedan {
+  background-image: url('assets/story-1.jpg');
+}
+
+.fleet-suv {
+  background-image: url('assets/story-2.jpg');
+}
+
+.fleet-limo {
+  background-image: url('assets/story-3.jpg');
+}
+
+.fleet-van {
+  background-image: url('assets/BUS.jpeg');
+}
+
+/* Fade-in Animation */
 @keyframes fadeIn {
   0% {
       opacity: 0;
@@ -703,54 +858,92 @@ nav {
 }
 
 /* Delay Animation for Each Card */
-.fleet__category:nth-child(1) {
-  animation-delay: 0.2s;
-}
+.fleet__category:nth-child(1) { animation-delay: 0.2s; }
+.fleet__category:nth-child(2) { animation-delay: 0.4s; }
+.fleet__category:nth-child(3) { animation-delay: 0.6s; }
+.fleet__category:nth-child(4) { animation-delay: 0.8s; }
 
-.fleet__category:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.fleet__category:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-.fleet__category:nth-child(4) {
-  animation-delay: 0.8s;
-}
-
+/* Text Styling */
 .fleet__category h3 {
   font-size: 1.4rem;
-  color: #222; /* Dark text for category headings */
   font-weight: bold;
   margin-bottom: 10px;
   letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Better readability */
 }
 
 .fleet__category ul {
   list-style: none;
   padding: 0;
+  display: flex; /* Arrange items in a row */
+  justify-content: flex-start; /* Align items to the left */
+  flex-wrap: wrap; /* Allows wrapping if space is not enough */
+  gap: 15px; /* Space between items */
+  text-align: left; /* Ensure text starts from left */
 }
 
 .fleet__category ul li {
   font-size: 1rem;
-  color: #333; /* Dark grey for list items */
-  margin-bottom: 10px;
-  padding-left: 10px;
+  color: #fff;
+  padding-left: 25px; /* Space for checkmark */
   position: relative;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  text-align: left; /* Ensure text aligns to left */
 }
 
+/* Adjust the position of the checkmark */
 .fleet__category ul li::before {
   content: "✔";
-  color: #f7c600; /* Yellow checkmark */
+  color: #ffeb3b; /* Yellow checkmark */
   position: absolute;
-  left: 0;
+  left: 0; /* Checkmark on the left */
+  top: 2px;
 }
 
-/* Hover Effect on Border Only */
+
+
+/* Hover Effects */
 .fleet__category:hover {
-  border: 2px solid #ffeb3b; /* Light yellow border on hover */
-  transform: translateY(-5px); /* Slight lift on hover */
+  border: 2px solid #ffeb3b;
+  transform: translateY(-5px);
+}
+
+/* Zoom-in Image Animation */
+.fleet__category::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Assign Background Images */
+.fleet-sedan::after {
+  background-image: url('assets/story-1.jpg');
+}
+
+.fleet-suv::after {
+  background-image: url('assets/story-2.jpg');
+}
+
+.fleet-limo::after {
+  background-image: url('assets/story-3.jpg');
+}
+
+.fleet-van::after {
+  background-image: url('assets/BUS.jpeg');
+}
+
+/* Apply Hover Effect */
+.fleet__category:hover::after {
+  transform: scale(1.1); /* Slight zoom-in */
 }
 
 /* Responsive Design */
@@ -775,123 +968,137 @@ nav {
   }
 
   .fleet__content h2 {
-      font-size: 1.8rem; /* Adjust font size */
+      font-size: 1.8rem;
   }
 }
 
 
+
 /* our services  */
 
+/* Services Section */
 .services {
-  background-color: #f4f4f2; /* Light Yellow */
-  color: #000000; /* Black */
-  padding: 40px;
-  font-family: Arial, sans-serif;
-}
-
-.service-header h2 {
   text-align: center;
-  font-size: 48px; /* Larger font size for 'Our Services' */
-  font-weight: bold;
-  text-transform: uppercase; /* Capitalizes all letters */
-  letter-spacing: 2px; /* Adjust letter spacing */
-  color: #000; /* Black color */
-  margin-bottom: 10px; /* Space below the text */
-  position: relative; /* Positioning for the line */
+  padding: 50px 20px;
+  background: #f8f8f8;
 }
 
-.service-header h2::after {
-  content: ''; /* Empty content for the line */
-  position: absolute;
-  bottom: 0; /* Position the line right under the text */
-  left: 0;
-  width: 100%;
-  height: 3px; /* Height of the line */
-  background-color: #f9e600; /* Light yellow color */
+/* Header Styling */
+.service-header h2 {
+  font-size: 2.5rem;
+  color: #222;
+  margin-bottom: 10px;
 }
 
 .service-header h3 {
-  text-align: center;
-  font-size: 24px; /* Slightly smaller font size for the subheading */
-  font-weight: normal;
-  text-transform: none; /* Keep original case for the subheading */
-  margin-top: 10px;
-  color: #333; /* Dark gray color */
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 30px;
 }
 
+/* Service List */
 .service-list {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two cards per row */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 1600px; /* Limit the grid width */
-  margin: 0 auto; /* Centering the grid */
+  margin-top: 20px;
 }
 
+/* Service Card */
 .service-card {
-  background-color: #ffffff; /* White */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /* For the border effect */
-  transition: all 0.3s ease; /* Smooth transition */
+  position: relative;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Hover effect for cards */
-.service-card:hover {
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
-  transform: scale(1.05); /* Slight scale increase */
-}
+/* Background Images */
+.airport { background-image: url("assets/Airport\ Tranfers.png"); }
+.corporate { background-image: url("assets/Event\ &\ Corporate.png"); }
+.all-day { background-image: url("assets/All\ day\ Hire.png"); }
+.wedding { background-image: url("assets/Wedding\ Car\ Service.png"); }
 
-/* Border animation on hover */
-.service-card::before {
-  content: '';
+/* Dark Overlay */
+.service-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  transition: all 0.5s ease; /* Smooth transition */
-  box-sizing: border-box;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  transition: background 0.3s ease;
 }
 
-.service-card:hover::before {
-  border: 2px solid #000; /* Black border */
-  border-top: 2px solid #f9e600; /* Yellow top border */
-  border-right: 2px solid #f9e600; /* Yellow right border */
-  border-bottom: 2px solid #f9e600; /* Yellow bottom border */
-  border-left: 2px solid #f9e600; /* Yellow left border */
+/* Hover Effects */
+.service-card:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
-.service-card h3 {
-  font-size: 22px;
-  color: #333333;
-  margin-bottom: 10px;
+.service-card:hover .service-overlay {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.service-card p {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #666666;
-  line-height: 1.6;
+.service-overlay h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 15px; /* Adjust the value as needed */
 }
 
-.service-card ul {
-  list-style-type: disc; /* Bullet points */
-  padding-left: 20px; /* Space from the left */
+.service-overlay p {
+  font-size: 1rem;
+  max-width: 250px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  margin-top: 0; /* Ensure there's no extra space above the paragraph */
 }
 
-.service-card ul li {
-  font-size: 16px;
-  margin: 5px 0;
+
+/* Font Fix */
+body {
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .service-header h2 {
+    font-size: 2rem;
+  }
+  
+  .service-header h3 {
+    font-size: 1rem;
+  }
+
+  .service-overlay h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+
 
 /* Make the layout responsive */
 @media (max-width: 768px) {
   .service-list {
       grid-template-columns: 1fr; /* One card per row on small screens */
   }
+  .hide-on-mobile {
+    display: none !important;
+}
 }
 
 
@@ -1310,7 +1517,7 @@ footer {
   font-size: 1.2rem;
   color: #2b2b2b;
   font-weight: 500;
-  background-color: #ff6f61;
+  background-color: #d4ac0d;
   color: #fff;
   padding: 15px;
   border-radius: 8px;
@@ -1321,7 +1528,7 @@ footer {
 }
 
 .cta p:hover {
-  background-color: #ff4f42;
+  background-color: #b8760c;
 }
 
 
