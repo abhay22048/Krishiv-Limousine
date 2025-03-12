@@ -360,7 +360,7 @@ nav {
 
 .range__details h4 {
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   font-family: var(--header-font);
   color: var(--white);
@@ -829,7 +829,7 @@ nav {
 }
 
 /* Apply background images */
-.fleet-sedan {
+/* .fleet-sedan {
   background-image: url('assets/story-1.jpg');
 }
 
@@ -843,7 +843,7 @@ nav {
 
 .fleet-van {
   background-image: url('assets/BUS.jpeg');
-}
+} */
 
 /* Fade-in Animation */
 @keyframes fadeIn {
@@ -930,11 +930,11 @@ nav {
 }
 
 .fleet-suv::after {
-  background-image: url('assets/story-2.jpg');
+  background-image: url('assets/mercedes-g-wagen.jpg');
 }
 
 .fleet-limo::after {
-  background-image: url('assets/story-3.jpg');
+  background-image: url('assets/2018-chrysler-300-C-Kendall-Dodge-1024x519.jpg');
 }
 
 .fleet-van::after {
@@ -1662,7 +1662,7 @@ footer {
   }
 
   .range__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 3fr);
   }
 
   .location__container {
@@ -1754,7 +1754,7 @@ footer {
   }
 
   .range__details {
-    padding: 4rem;
+    padding: 1rem;
   }
 
   .story__grid {
